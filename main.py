@@ -74,9 +74,10 @@ class ViewPostHandler(Handler):
         if not post_id:
             self.response.write("No such post exists")
             return
-
-        self.response.write("<h1>" + post_id.title + "</h1><br>")
-        self.response.write(post_id.post)
+        else:
+            self.render("post.html", title=post_id.title,post=post_id.post)
+            #self.response.write("<h2>" + post_id.title + "</h2>")
+            #self.response.write(post_id.post)
 
 app = webapp2.WSGIApplication([
     ('/blog', MainPage),
